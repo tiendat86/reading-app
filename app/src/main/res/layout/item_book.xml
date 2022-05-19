@@ -6,9 +6,9 @@
     android:layout_margin="12dp"
     android:background="@drawable/border">
     <androidx.cardview.widget.CardView
-        app:cardCornerRadius="15dp"
-        android:layout_width="100dp"
-        android:layout_height="150dp">
+        app:cardCornerRadius="20dp"
+        android:layout_width="130dp"
+        android:layout_height="180dp">
         <ImageView
             android:id="@+id/imgView"
             android:scaleType="fitXY"
@@ -47,6 +47,13 @@
             android:layout_marginTop="12dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tCategories"
+            android:text="Categories"
+            android:textSize="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
         <LinearLayout
             android:layout_marginTop="12dp"
             android:layout_width="match_parent"
@@ -55,14 +62,14 @@
             <TextView
                 android:id="@+id/tNumChapter"
                 android:text="Number chapter"
-                android:textSize="16dp"
+                android:textSize="14dp"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
                 android:id="@+id/tComplete"
                 android:text="Done"
-                android:textSize="16dp"
+                android:textSize="14dp"
                 android:layout_marginRight="12dp"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"

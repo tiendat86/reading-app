@@ -29,6 +29,8 @@ import com.example.reading_app.ui.chapter.ChapterContentActivity;
 import com.google.android.material.tabs.TabLayout;
 import com.squareup.picasso.Picasso;
 
+import org.apache.commons.lang3.StringUtils;
+
 import jp.wasabeef.glide.transformations.BlurTransformation;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -37,7 +39,7 @@ import retrofit2.Response;
 public class BookDetailActivity extends AppCompatActivity implements View.OnClickListener {
     private ImageView imgBlur, imgView;
     private ImageButton iconBack, btnAddBookShelf;
-    private TextView tName, tAuthor, tNumChapter, tComplete, textDetail;
+    private TextView tName, tAuthor, tNumChapter, tComplete, textDetail, tCategories;
     private Button readBook;
     private TabLayout tabLayout;
     private ViewPager viewPager;
@@ -66,6 +68,7 @@ public class BookDetailActivity extends AppCompatActivity implements View.OnClic
         viewPager = findViewById(R.id.viewPager);
         textDetail = findViewById(R.id.textDetail);
         readBook = findViewById(R.id.readBook);
+        tCategories = findViewById(R.id.tCategories);
         // Set giá trị mặc định
         Glide.with(getApplicationContext())
                 .load(book.getUrlImg())
@@ -78,7 +81,9 @@ public class BookDetailActivity extends AppCompatActivity implements View.OnClic
         tAuthor.setText(book.getPseudonym());
         tNumChapter.setText("Số chương: " + book.getNumChapter());
         tComplete.setText(book.getComplete() ? "Đã hoàn thành" : "Chưa hoàn thành");
-        checkBookshelfApi();
+        tCategories.setText(StringUtils.join(book.getCategories(), ", "));
+        if (MainActivity.user != null)
+            checkBookshelfApi();
         
         // viewpager and adapter
         BookDetailPagerAdapter adapter = new BookDetailPagerAdapter(getSupportFragmentManager(), 3, book.getId());

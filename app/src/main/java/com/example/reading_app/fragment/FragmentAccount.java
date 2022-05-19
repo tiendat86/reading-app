@@ -50,7 +50,7 @@ public class FragmentAccount extends Fragment {
                 startActivity(intent);
             });
         } else {
-            if (!MainActivity.user.getUrlImg().isEmpty() && MainActivity.user.getUrlImg() != null) {
+            if (MainActivity.user.getUrlImg() != null && !MainActivity.user.getUrlImg().isEmpty()) {
                 Picasso.get().load(MainActivity.user.getUrlImg()).into(imgView);
             }
             eName.setText(MainActivity.user.getFullname());

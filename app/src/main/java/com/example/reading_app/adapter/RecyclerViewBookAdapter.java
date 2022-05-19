@@ -5,22 +5,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.example.reading_app.R;
 import com.example.reading_app.api.ApiService;
 import com.example.reading_app.dto.response.BookResonseDTO;
 import com.example.reading_app.entity.Chapter;
 import com.squareup.picasso.Picasso;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
 
-import jp.wasabeef.glide.transformations.BlurTransformation;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -53,6 +50,7 @@ public class RecyclerViewBookAdapter extends RecyclerView.Adapter<RecyclerViewBo
         if (item.getIdChapterLastRead() != null) {
             setValueApi(item.getIdChapterLastRead(), holder);
         }
+        holder.tCategories.setText(StringUtils.join(item.getCategories(), ", "));
     }
 
     private void setValueApi(Integer id, BookViewHolder holder) {
@@ -92,7 +90,7 @@ public class RecyclerViewBookAdapter extends RecyclerView.Adapter<RecyclerViewBo
 
     public class BookViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private ImageView imgView;
-        private TextView tName, tAuthor, tNumChapter, tComplete, tChapterNow;
+        private TextView tName, tAuthor, tNumChapter, tComplete, tChapterNow, tCategories;
         public BookViewHolder(@NonNull View view) {
             super(view);
             imgView = view.findViewById(R.id.imgView);
@@ -101,6 +99,7 @@ public class RecyclerViewBookAdapter extends RecyclerView.Adapter<RecyclerViewBo
             tNumChapter = view.findViewById(R.id.tNumChapter);
             tComplete = view.findViewById(R.id.tComplete);
             tChapterNow = view.findViewById(R.id.tChapterNow);
+            tCategories = view.findViewById(R.id.tCategories);
             view.setOnClickListener(this);
         }
 

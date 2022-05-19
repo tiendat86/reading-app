@@ -1,39 +1,32 @@
 package com.example.reading_app.ui.authen;
 
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.Toast;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
-import android.app.ProgressDialog;
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.ImageButton;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import com.example.reading_app.MainActivity;
 import com.example.reading_app.R;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.GoogleAuthProvider;
+import com.example.reading_app.api.ApiService;
+import com.example.reading_app.common.MessageDialogCustom;
+import com.example.reading_app.dal.SQLiteHelper;
+import com.example.reading_app.entity.User;
+import com.facebook.login.Login;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
-    private ImageButton loginGoogle, loginFacebook;
+    private ImageButton loginGoogle, loginFacebook, btnClose;
+    private Button btnLogin, btnRegister;
+    private EditText eUsername, ePass;
     private final static int REQUEST_CODE_GOOGLE = 10000;
     private final static int REQUEST_CODE_FACEBOOK = 10001;
     
@@ -44,6 +37,17 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         loginGoogle = findViewById(R.id.loginGoogle);
         loginFacebook = findViewById(R.id.loginFacebook);
+        btnClose = findViewById(R.id.btnClose);
+        btnLogin = findViewById(R.id.btnLogin);
+        btnRegister = findViewById(R.id.btnRegister);
+        eUsername = findViewById(R.id.eUsername);
+        ePass = findViewById(R.id.ePass);
+        
+        setOnClickListener();
+    }
+    
+    public void setOnClickListener () {
+        btnClose.setOnClickListener(v -> finish());
         
         loginGoogle.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
                 startActivityForResult(intent, REQUEST_CODE_GOOGLE);
             }
         });
-        
+
         loginFacebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,6 +64,54 @@ public class LoginActivity extends AppCompatActivity {
                 startActivityForResult(intent, REQUEST_CODE_FACEBOOK);
             }
         });
+
+        btnRegister.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+            startActivity(intent);
+        });
+        
+        btnLogin.setOnClickListener(v -> {
+            loginProgress();
+        });
+    }
+
+    private void loginProgress() {
+        String username = eUsername.getText().toString();
+        String password = ePass.getText().toString();
+        if (username.equals(" ") || username.contains(" ")) {
+            errorMsg("Sai định dạng tài khoản");
+        } else if (password.equals(" ")) {
+            errorMsg("Sai định dạng mật khẩu");
+        } else {
+            ApiService.apiService.login(username, password).enqueue(new Callback<User>() {
+                @Override
+                public void onResponse(Call<User> call, Response<User> response) {
+                    if (response.code() == 200) {
+                        SQLiteHelper sqLiteHelper = new SQLiteHelper(getApplicationContext());
+                        sqLiteHelper.addUser(response.body());
+                        MainActivity.user = response.body();
+                        successMsg("Đăng nhập thành công");
+                        finish();
+                    }
+                    else {
+                        errorMsg("Sai thông tin tài khoản hoặc mật khẩu");
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<User> call, Throwable t) {
+                    errorMsg("Sai thông tin tài khoản hoặc mật khẩu");
+                }
+            });
+        }
+    }
+
+    private void errorMsg(String msg) {
+        new MessageDialogCustom(this, "Cảnh báo", msg, R.drawable.warning_red).show();
+    }
+
+    private void successMsg(String msg) {
+        new MessageDialogCustom(this, "Thông báo", msg, R.drawable.success_blue).show();
     }
 
     @Override
@@ -67,8 +119,10 @@ public class LoginActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE_GOOGLE && resultCode == RESULT_OK) {
             finish();
-        } else if (requestCode == REQUEST_CODE_GOOGLE && resultCode != RESULT_OK) {
-//            Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
+        } else if (requestCode == REQUEST_CODE_FACEBOOK && resultCode == RESULT_OK) {
+            finish();
+        } else {
+            Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
         }
-    }
+    } 
 }

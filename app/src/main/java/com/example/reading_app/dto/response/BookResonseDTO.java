@@ -1,6 +1,7 @@
 package com.example.reading_app.dto.response;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class BookResonseDTO implements Serializable {
     private Integer id;
@@ -10,6 +11,7 @@ public class BookResonseDTO implements Serializable {
     private String pseudonym;
     private Integer numChapter;
     private Integer idChapterLastRead;
+    private List<String> categories;
 
     public BookResonseDTO() {
     }
@@ -22,6 +24,17 @@ public class BookResonseDTO implements Serializable {
         this.pseudonym = pseudonym;
         this.numChapter = numChapter;
         this.idChapterLastRead = idChapterLastRead;
+    }
+
+    public BookResonseDTO(Integer id, String name, Boolean complete, String urlImg, String pseudonym, Integer numChapter, Integer idChapterLastRead, List<String> categories) {
+        this.id = id;
+        this.name = name;
+        this.complete = complete;
+        this.urlImg = urlImg;
+        this.pseudonym = pseudonym;
+        this.numChapter = numChapter;
+        this.idChapterLastRead = idChapterLastRead;
+        this.categories = categories;
     }
 
     public Integer getId() {
@@ -78,5 +91,13 @@ public class BookResonseDTO implements Serializable {
 
     public void setIdChapterLastRead(Integer idChapterLastRead) {
         this.idChapterLastRead = idChapterLastRead;
+    }
+
+    public List<String> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<String> categories) {
+        this.categories = categories;
     }
 }

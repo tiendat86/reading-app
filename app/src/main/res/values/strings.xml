@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">reading-app</string>
+    <string name="app_name">Reading App</string>
 
-    <string name="facebook_app_id">1234</string>
+    <string name="facebook_app_id">476691244212808</string>
     <string name="fb_login_protocol_scheme">fb1234</string>
-    <string name="facebook_client_token">56789</string>
+    <string name="facebook_client_token">d229bb570d38739c7829fa69fa706590</string>
 </resources>

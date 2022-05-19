@@ -6,6 +6,7 @@ import com.example.reading_app.dto.response.ChapterDetailResponseDTO;
 import com.example.reading_app.dto.response.ChapterResponseDTO;
 import com.example.reading_app.entity.Bookshelf;
 import com.example.reading_app.entity.Chapter;
+import com.example.reading_app.entity.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -21,13 +22,12 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface ApiService {
-    // Link API: http://localhost:8080/user/find-book/Kim
     Gson gson = new GsonBuilder()
             .setDateFormat("yyyy-MM-dd HH:mm:ss")
             .create();
     
     ApiService apiService = new Retrofit.Builder()
-            .baseUrl("http://192.168.0.108:8080/")
+            .baseUrl("http://192.168.43.225:8080/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ApiService.class);
@@ -97,5 +97,13 @@ public interface ApiService {
     @FormUrlEncoded
     Call<Void> updateStatusBookshelf(@Field("username") String username, @Field("idBook") Integer idBook,
                                      @Field("idChapter") Integer idChapter);
-    
+
+    @POST("register")
+    @FormUrlEncoded
+    Call<Void> register(@Field("username") String username, @Field("password") String password,
+                                     @Field("fullname") String fullname);
+
+    @POST("login")
+    @FormUrlEncoded
+    Call<User> login(@Field("username") String username, @Field("password") String password);
 }

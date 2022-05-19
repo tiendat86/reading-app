@@ -56,29 +56,26 @@ public class FacebookSignInActivity extends LoginActivity {
         mUser = mAuth.getCurrentUser();
 
         callbackManager = CallbackManager.Factory.create();
-
+        
         LoginManager.getInstance().logOut();
-        LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile"));
+        LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("email", "public_profile", "user_friends"));
         LoginManager.getInstance().registerCallback(callbackManager,
                 new FacebookCallback<LoginResult>() {
                     @Override
-                    public void onSuccess(LoginResult loginResult) {                        
-                        System.out.println("66666");
+                    public void onSuccess(LoginResult loginResult) {
                         handleFacebookAccessToken(loginResult.getAccessToken());
                     }
 
                     @Override
                     public void onCancel() {
-                        // App code
+                        System.out.println("6666");
                         progressDialog.dismiss();
-                        System.out.println("33333333");
                     }
 
                     @Override
                     public void onError(FacebookException exception) {
-                        // App code   
+                        System.out.println("6666");
                         progressDialog.dismiss();
-                        System.out.println("33333333");
                     }
                 });
     }
