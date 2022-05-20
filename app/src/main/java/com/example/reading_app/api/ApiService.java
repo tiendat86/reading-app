@@ -4,8 +4,10 @@ import com.example.reading_app.dto.response.BookDetailResponseDTO;
 import com.example.reading_app.dto.response.BookResonseDTO;
 import com.example.reading_app.dto.response.ChapterDetailResponseDTO;
 import com.example.reading_app.dto.response.ChapterResponseDTO;
+import com.example.reading_app.dto.response.ReviewResponseDTO;
 import com.example.reading_app.entity.Bookshelf;
 import com.example.reading_app.entity.Chapter;
+import com.example.reading_app.entity.Review;
 import com.example.reading_app.entity.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -27,7 +29,7 @@ public interface ApiService {
             .create();
     
     ApiService apiService = new Retrofit.Builder()
-            .baseUrl("http://192.168.43.225:8080/")
+            .baseUrl("http://192.168.0.108:8080/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ApiService.class);
@@ -95,7 +97,7 @@ public interface ApiService {
 
     @POST("bookshelf/update-status")
     @FormUrlEncoded
-    Call<Void> updateStatusBookshelf(@Field("username") String username, @Field("idBook") Integer idBook,
+    Call<Void> updateStatusBookshelf(@  Field("username") String username, @Field("idBook") Integer idBook,
                                      @Field("idChapter") Integer idChapter);
 
     @POST("register")
@@ -106,4 +108,12 @@ public interface ApiService {
     @POST("login")
     @FormUrlEncoded
     Call<User> login(@Field("username") String username, @Field("password") String password);
+
+    @POST("book/create-review")
+    @FormUrlEncoded
+    Call<Void> createReview(@Field("content") String content, @Field("rating") String rating,
+                             @Field("username") String username, @Field("idBook") Integer idBook);
+
+    @GET("user/book/review/{idBook}")
+    Call<List<ReviewResponseDTO>> getAllReview(@Path("idBook") Integer idBook);
 }

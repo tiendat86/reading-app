@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import com.example.reading_app.fragment.bookdetail.FragmentComment;
+import com.example.reading_app.fragment.bookdetail.FragmentReview;
 import com.example.reading_app.fragment.bookdetail.FragmentIntroduce;
 import com.example.reading_app.fragment.bookdetail.FragmentListChapter;
 
@@ -22,7 +22,7 @@ public class BookDetailPagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0: return new FragmentIntroduce(idBook);
-            case 1: return new FragmentComment(idBook);
+            case 1: return new FragmentReview(idBook);
             case 2: return new FragmentListChapter(idBook);
             default: return new FragmentIntroduce(idBook);
         }

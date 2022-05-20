@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="12dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal">
+    <androidx.cardview.widget.CardView
+        app:cardCornerRadius="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/imgAvatar"
+            android:src="@drawable/img"
+            android:scaleType="fitXY"
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
+    </androidx.cardview.widget.CardView>
+    <LinearLayout
+        android:layout_marginLeft="20dp"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tName"
+            android:text="NAME"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <RatingBar
+            android:id="@+id/ratingReview"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <com.borjabravo.readmoretextview.ReadMoreTextView
+            android:id="@+id/tContent"
+            android:text="Qúy vị không phải tác giả bên Trung quý vị không biết, chứ giờ viết truyện đô thị mà quý vị không tung hô tinh thần đại háng là cua đồng kẹp ngay, quyển sách của quý vị đang đắt khách tự dưng bị cấm, hoặc là dek có ai đọc nữa. Huống hồ, quý vị ạ, đây là người TQ viết cho người TQ đọc, quý vị chỉ là tiện đường đọc ké thôi, lơ đi coi như xong, ý kiến nhiều làm gì cho mệt"
+            app:trimExpandedText=" more"
+            app:trimCollapsedText=" less"
+            app:colorClickableText="@color/blue"
+            app:trimMode="trimModeLength"
+            app:trimLength="170"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </com.borjabravo.readmoretextview.ReadMoreTextView>
+    </LinearLayout>
+</LinearLayout>
