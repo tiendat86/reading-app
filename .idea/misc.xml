@@ -27,12 +27,15 @@
         <entry key="..\:/HocTap/Android/ReadingApp/app/src/main/res/drawable/notification_blue.xml" value="0.1955" />
         <entry key="..\:/HocTap/Android/ReadingApp/app/src/main/res/layout/activity_book_detail.xml" value="0.2879999900124293" />
         <entry key="..\:/HocTap/Android/ReadingApp/app/src/main/res/layout/activity_chapter_content.xml" value="0.25416666666666665" />
+        <entry key="..\:/HocTap/Android/ReadingApp/app/src/main/res/layout/activity_chapter_content_download.xml" value="0.25416666666666665" />
         <entry key="..\:/HocTap/Android/ReadingApp/app/src/main/res/layout/activity_facebook_sign_in.xml" value="0.2942708333333333" />
         <entry key="..\:/HocTap/Android/ReadingApp/app/src/main/res/layout/activity_google_sign_in.xml" value="0.25416666666666665" />
+        <entry key="..\:/HocTap/Android/ReadingApp/app/src/main/res/layout/activity_list_chapter_download.xml" value="0.25416666666666665" />
         <entry key="..\:/HocTap/Android/ReadingApp/app/src/main/res/layout/activity_login.xml" value="0.2879999900124293" />
         <entry key="..\:/HocTap/Android/ReadingApp/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/HocTap/Android/ReadingApp/app/src/main/res/layout/activity_register.xml" value="0.2942708333333333" />
         <entry key="..\:/HocTap/Android/ReadingApp/app/src/main/res/layout/activity_search.xml" value="0.25416666666666665" />
+        <entry key="..\:/HocTap/Android/ReadingApp/app/src/main/res/layout/activity_search_filter.xml" value="0.25416666666666665" />
         <entry key="..\:/HocTap/Android/ReadingApp/app/src/main/res/layout/activity_write_comment.xml" value="0.25416666666666665" />
         <entry key="..\:/HocTap/Android/ReadingApp/app/src/main/res/layout/activity_write_review.xml" value="0.25416666666666665" />
         <entry key="..\:/HocTap/Android/ReadingApp/app/src/main/res/layout/corner_background.xml" value="0.25416666666666665" />
@@ -41,6 +44,7 @@
         <entry key="..\:/HocTap/Android/ReadingApp/app/src/main/res/layout/fragment_bookshelf.xml" value="0.25416666666666665" />
         <entry key="..\:/HocTap/Android/ReadingApp/app/src/main/res/layout/fragment_comment.xml" value="0.25416666666666665" />
         <entry key="..\:/HocTap/Android/ReadingApp/app/src/main/res/layout/fragment_content.xml" value="0.25416666666666665" />
+        <entry key="..\:/HocTap/Android/ReadingApp/app/src/main/res/layout/fragment_download_book.xml" value="0.25416666666666665" />
         <entry key="..\:/HocTap/Android/ReadingApp/app/src/main/res/layout/fragment_favorite_book.xml" value="0.2942708333333333" />
         <entry key="..\:/HocTap/Android/ReadingApp/app/src/main/res/layout/fragment_history_book.xml" value="0.2942708333333333" />
         <entry key="..\:/HocTap/Android/ReadingApp/app/src/main/res/layout/fragment_home.xml" value="0.253125" />
@@ -49,10 +53,13 @@
         <entry key="..\:/HocTap/Android/ReadingApp/app/src/main/res/layout/fragment_notification.xml" value="0.25416666666666665" />
         <entry key="..\:/HocTap/Android/ReadingApp/app/src/main/res/layout/fragment_review.xml" value="0.25416666666666665" />
         <entry key="..\:/HocTap/Android/ReadingApp/app/src/main/res/layout/item_book.xml" value="0.264" />
+        <entry key="..\:/HocTap/Android/ReadingApp/app/src/main/res/layout/item_book_bookshelf.xml" value="0.25416666666666665" />
         <entry key="..\:/HocTap/Android/ReadingApp/app/src/main/res/layout/item_book_img.xml" value="0.264" />
+        <entry key="..\:/HocTap/Android/ReadingApp/app/src/main/res/layout/item_bookshelf.xml" value="0.25416666666666665" />
         <entry key="..\:/HocTap/Android/ReadingApp/app/src/main/res/layout/item_comment.xml" value="0.264" />
         <entry key="..\:/HocTap/Android/ReadingApp/app/src/main/res/layout/item_list_chapter.xml" value="0.25416666666666665" />
-        <entry key="..\:/HocTap/Android/ReadingApp/app/src/main/res/layout/item_rating.xml" value="0.25416666666666665" />
+        <entry key="..\:/HocTap/Android/ReadingApp/app/src/main/res/layout/item_rating.xml" value="0.264" />
+        <entry key="..\:/HocTap/Android/ReadingApp/app/src/main/res/layout/select_dialog.xml" value="0.253125" />
         <entry key="..\:/HocTap/Android/ReadingApp/app/src/main/res/menu/navigation.xml" value="0.25416666666666665" />
       </map>
     </option>

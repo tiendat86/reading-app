@@ -55,18 +55,19 @@
         android:layout_height="wrap_content">
 
         <TextView
+            android:id="@+id/ratingAvg"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginRight="12dp"
             android:gravity="center"
             android:lines="2"
-            android:text="Rating:"
+            android:text="Rating (0)"
             android:textSize="16dp" />
 
         <RatingBar
             android:id="@+id/totalRating"
-            android:rating="3.5"
             android:numStars="5"
+            android:isIndicator="true"
             android:progressTint="@color/yellow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

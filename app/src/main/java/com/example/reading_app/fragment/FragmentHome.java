@@ -20,6 +20,7 @@ import com.example.reading_app.api.ApiService;
 import com.example.reading_app.dto.response.BookResonseDTO;
 import com.example.reading_app.ui.book.BookDetailActivity;
 import com.example.reading_app.ui.book.SearchActivity;
+import com.example.reading_app.ui.book.SearchFilterActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -81,7 +82,6 @@ public class FragmentHome extends Fragment implements View.OnClickListener, Recy
 
             @Override
             public void onFailure(Call<List<BookResonseDTO>> call, Throwable t) {
-                Toast.makeText(getContext(), "Không lấy được dữ liệu", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -97,7 +97,6 @@ public class FragmentHome extends Fragment implements View.OnClickListener, Recy
 
             @Override
             public void onFailure(Call<List<BookResonseDTO>> call, Throwable t) {
-                Toast.makeText(getContext(), "Không lấy được dữ liệu", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -114,7 +113,6 @@ public class FragmentHome extends Fragment implements View.OnClickListener, Recy
 
             @Override
             public void onFailure(Call<List<BookResonseDTO>> call, Throwable t) {
-                Toast.makeText(getContext(), "Không lấy được dữ liệu", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -125,7 +123,8 @@ public class FragmentHome extends Fragment implements View.OnClickListener, Recy
             Intent intent = new Intent(getActivity(), SearchActivity.class);
             startActivity(intent);
         } else if (v == iconFilter) {
-            
+            Intent intent = new Intent(getActivity(), SearchFilterActivity.class);
+            startActivity(intent);
         }
     }
 
@@ -136,7 +135,7 @@ public class FragmentHome extends Fragment implements View.OnClickListener, Recy
         if (recyclerViewNew.findContainingItemView(view) != null) {
             book = adapterNewBook.getItem(position);
         } else if (recyclerViewComplete.findContainingItemView(view) != null) {
-            book = adapterNewBook.getItem(position);
+            book = adapterCompleteBook.getItem(position);
         } else if (recyclerViewNoComplete.findContainingItemView(view) != null) {
             book = adapterNoCompleteBook.getItem(position);
         }

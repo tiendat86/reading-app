@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
+import com.example.reading_app.fragment.bookshelf.FragmentDownloadBook;
 import com.example.reading_app.fragment.bookshelf.FragmentFavoriteBook;
 import com.example.reading_app.fragment.bookshelf.FragmentHistoryBook;
 
@@ -20,13 +21,14 @@ public class BookshelfViewPagerAdapter extends FragmentStatePagerAdapter {
         switch (position) {
             case 0: return new FragmentHistoryBook();
             case 1: return new FragmentFavoriteBook();
+            case 2: return new FragmentDownloadBook();
             default: return new FragmentHistoryBook();
         }
     }
 
     @Override
     public int getCount() {
-        return 2;
+        return 3;
     }
 
     @Nullable
@@ -35,6 +37,7 @@ public class BookshelfViewPagerAdapter extends FragmentStatePagerAdapter {
         switch (position) {
             case 0: return "Lịch sử";
             case 1: return "Yêu thích";
+            case 2: return "Tải xuống";
             default: return "Lịch sử";
         }
     }

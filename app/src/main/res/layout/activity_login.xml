@@ -34,6 +34,7 @@
         android:layout_marginTop="12dp"
         android:drawablePadding="16dp"
         android:hint="Mật khẩu"
+        android:inputType="textPassword"
         android:paddingBottom="20dp"
         android:drawableLeft="@drawable/ic_password"
         android:layout_width="match_parent"

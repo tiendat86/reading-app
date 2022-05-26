@@ -54,7 +54,6 @@ public class FragmentIntroduce extends Fragment {
 
             @Override
             public void onFailure(Call<BookDetailResponseDTO> call, Throwable t) {
-                Toast.makeText(getContext(), "Không lấy được dữ liệu", Toast.LENGTH_LONG).show();
             }
         });
     }

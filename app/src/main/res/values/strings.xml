@@ -1,6 +1,16 @@
 <resources>
     <string name="app_name">Reading App</string>
 
+    <string name="cTienhiep">Tiên Hiệp</string>
+    <string name="cHuyenhuyen">Huyền Huyễn</string>
+    <string name="cKhoahuyen">Khoa Huyễn</string>
+    <string name="cVongdu">Võng Du</string>
+    <string name="cDoThi">Đô Thị</string>
+    <string name="cDongnhan">Đồng Nhân</string>
+    <string name="cDaSu">Dã Sử</string>
+    <string name="cKiemHiep">Kiếm Hiệp</string>
+    <string name="cKyAo">Kỳ Ảo</string>
+    
     <string name="facebook_app_id">476691244212808</string>
     <string name="fb_login_protocol_scheme">fb1234</string>
     <string name="facebook_client_token">d229bb570d38739c7829fa69fa706590</string>

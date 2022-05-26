@@ -32,10 +32,8 @@ public class FragmentContent extends Fragment {
         iconFilter = view.findViewById(R.id.iconFilter);
         tabLayout = view.findViewById(R.id.tabLayout);
         viewPager = view.findViewById(R.id.viewPager);
-        BookshelfViewPagerAdapter adapter = new BookshelfViewPagerAdapter(getChildFragmentManager(), 2);
+        BookshelfViewPagerAdapter adapter = new BookshelfViewPagerAdapter(getChildFragmentManager(), 3);
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
-//        tabLayout.getTabAt(0).setIcon(R.drawable.ic_baseline_library_books_24);
-//        tabLayout.getTabAt(1).setIcon(R.drawable.ic_baseline_cloud_download_24);
     }
 }

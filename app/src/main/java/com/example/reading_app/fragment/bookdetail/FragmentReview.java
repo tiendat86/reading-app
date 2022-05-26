@@ -25,6 +25,7 @@ import com.example.reading_app.entity.Review;
 import com.example.reading_app.ui.book.WriterReviewActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,7 +34,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class FragmentReview extends Fragment {
-    private TextView totalComment;
+    private TextView totalComment, ratingAvg;
     private FloatingActionButton btnAddComment;
     private Button btnNew, btnLike;
     private RatingBar totalRating;
@@ -59,12 +60,19 @@ public class FragmentReview extends Fragment {
 
     }
 
+    @Override
+    public void onResume() {
+        callReviewApi();
+        super.onResume();
+    }
+
     private void initData(View view) {
         totalComment = view.findViewById(R.id.totalComment);
         btnAddComment = view.findViewById(R.id.btnAddComment);
         btnNew = view.findViewById(R.id.btnNew);
         btnLike = view.findViewById(R.id.btnLike);
         totalRating = view.findViewById(R.id.totalRating);
+        ratingAvg = view.findViewById(R.id.ratingAvg);
         recyclerView = view.findViewById(R.id.recyclerView);
         LinearLayoutManager manager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(manager);
@@ -84,6 +92,10 @@ public class FragmentReview extends Fragment {
                         sum += Float.parseFloat(review.getRating());
                     }
                     totalRating.setRating(sum / reviews.size());
+                    if (reviews.size() > 0) {
+                        DecimalFormat f = new DecimalFormat("##.0");
+                        ratingAvg.setText("Rating (" + f.format(sum / reviews.size()) + ")");
+                    }
                     totalComment.setText("Đánh giá (" + reviews.size() + ")");
                     adapter.setList(reviews);
                 }

@@ -49,6 +49,9 @@ public class RecyclerViewReviewAdapter extends RecyclerView.Adapter<RecyclerView
         holder.tName.setText(item.getFullname());
         holder.ratingReview.setRating(Float.parseFloat(item.getRating()));
         holder.tContent.setText(item.getContent());
+        String []date = item.getCreatedAt().substring(0, 10).split("-");
+        String time = item.getCreatedAt().substring(11) + " " + date[2] + "-" + date[1] + "-" + date[0];
+        holder.tTime.setText(time);
     }
 
     @Override
@@ -72,13 +75,14 @@ public class RecyclerViewReviewAdapter extends RecyclerView.Adapter<RecyclerView
     public class ReviewViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private ImageView imgAvatar;
         private RatingBar ratingReview;
-        private TextView tName, tContent;
+        private TextView tName, tContent, tTime;
         public ReviewViewHolder(@NonNull View view) {
             super(view);
             imgAvatar = view.findViewById(R.id.imgAvatar);
             ratingReview = view.findViewById(R.id.ratingReview);
             tContent = view.findViewById(R.id.tContent);
             tName = view.findViewById(R.id.tName);
+            tTime = view.findViewById(R.id.tTime);
             view.setOnClickListener(this);
         }
 

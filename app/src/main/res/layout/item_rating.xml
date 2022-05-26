@@ -28,6 +28,14 @@
             android:textSize="18dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tTime"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="4dp"
+            android:text="18-02-2000"
+            android:textSize="14dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
         <RatingBar
             android:id="@+id/ratingReview"
             style="?android:attr/ratingBarStyleSmall"
@@ -36,8 +44,8 @@
         <com.borjabravo.readmoretextview.ReadMoreTextView
             android:id="@+id/tContent"
             android:text="Qúy vị không phải tác giả bên Trung quý vị không biết, chứ giờ viết truyện đô thị mà quý vị không tung hô tinh thần đại háng là cua đồng kẹp ngay, quyển sách của quý vị đang đắt khách tự dưng bị cấm, hoặc là dek có ai đọc nữa. Huống hồ, quý vị ạ, đây là người TQ viết cho người TQ đọc, quý vị chỉ là tiện đường đọc ké thôi, lơ đi coi như xong, ý kiến nhiều làm gì cho mệt"
-            app:trimExpandedText=" more"
-            app:trimCollapsedText=" less"
+            app:trimExpandedText="show more"
+            app:trimCollapsedText="show less"
             app:colorClickableText="@color/blue"
             app:trimMode="trimModeLength"
             app:trimLength="170"

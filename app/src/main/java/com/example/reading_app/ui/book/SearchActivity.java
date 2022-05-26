@@ -6,7 +6,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -50,6 +52,25 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         adapter.setItemListener(this);
         iconBack.setOnClickListener(this);
         btnSearch.setOnClickListener(this);
+        
+        Intent intent = getIntent();
+        List<BookResonseDTO> filter = (List<BookResonseDTO>) intent.getSerializableExtra("filter");
+        if (filter != null) {
+            adapter.setList(filter);
+            String key = intent.getStringExtra("key");
+            eSearch.setText(key);
+        }
+        
+        eSearch.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_ENTER) {
+                    callApi();
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
     @Override
@@ -83,7 +104,6 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
                     @Override
                     public void onFailure(Call<List<BookResonseDTO>> call, Throwable t) {
-                        Toast.makeText(getApplicationContext(), "Không lấy được dữ liệu", Toast.LENGTH_LONG).show();
                     }
                 });
     }

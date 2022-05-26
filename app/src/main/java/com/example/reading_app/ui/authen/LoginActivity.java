@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.reading_app.MainActivity;
@@ -33,8 +34,8 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
         setContentView(R.layout.activity_login);
+        
         loginGoogle = findViewById(R.id.loginGoogle);
         loginFacebook = findViewById(R.id.loginFacebook);
         btnClose = findViewById(R.id.btnClose);
@@ -87,11 +88,16 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<User> call, Response<User> response) {
                     if (response.code() == 200) {
-                        SQLiteHelper sqLiteHelper = new SQLiteHelper(getApplicationContext());
+                        SQLiteHelper sqLiteHelper = new SQLiteHelper(LoginActivity.this);
                         sqLiteHelper.addUser(response.body());
                         MainActivity.user = response.body();
                         successMsg("Đăng nhập thành công");
-                        finish();
+                        new AlertDialog.Builder(LoginActivity.this)
+                                .setTitle("Thông báo")
+                                .setMessage("Đăng nhập thành công")
+                                .setIcon(R.drawable.success_blue)
+                                .setPositiveButton("Đóng", (dialog, which) -> finish()).show();
+                        
                     }
                     else {
                         errorMsg("Sai thông tin tài khoản hoặc mật khẩu");

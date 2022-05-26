@@ -4,9 +4,11 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
@@ -24,6 +26,7 @@ public class WriterReviewActivity extends AppCompatActivity {
     private RatingBar ratingReview;
     private EditText contentReview;
     private Button btnCreateReview;
+    private ImageButton iconBack;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +35,10 @@ public class WriterReviewActivity extends AppCompatActivity {
         ratingReview = findViewById(R.id.ratingReview);
         contentReview = findViewById(R.id.contentReview);
         btnCreateReview = findViewById(R.id.btnCreateReview);
+        iconBack = findViewById(R.id.iconBack);
         
         btnCreateReview.setOnClickListener(v -> apiCreateReview());
+        iconBack.setOnClickListener(v -> finish());
     }
 
     private void apiCreateReview() {
